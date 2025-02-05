@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Получить IP</title>
+</head>
+<body>
+    <h1>Пожалуйста, подождите...</h1>
+    <script>
+        // Используем сторонний сервис для получения IP
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                // Отправляем IP на ваш сервер
+                fetch(`https://ваш-сервер.com/log-ip?ip=${ip}`)
+                    .then(response => console.log('IP отправлен'))
+                    .catch(error => console.error('Ошибка:', error));
+            });
+    </script>
+</body>
+</html>
+
